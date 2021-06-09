@@ -34,6 +34,17 @@ function numberOfOccurrencesInText(word, text) {
   return wordCount;
 }
 
+function mostUsedWords(word, text) {
+  const wordArray = text.split(" ");
+  let wordCount = 0;
+  wordArray.forEach(function(element) {
+    if (element.toLowerCase() === word.toLowerCase()) {
+    wordCount++
+    }
+  });
+
+}
+
 //UI Logic
 
 function boldPassage(word, text) {
@@ -62,8 +73,10 @@ $(document).ready(function(){
     const word = $("#word").val();
     const wordCount = wordCounter(passage);
     const occurencesOfWord = numberOfOccurrencesInText(word, passage);
+    const mostUsedWords = mostUsedWords(word, text);
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurencesOfWord);
     $("#bolded-passage").html(boldPassage(word, passage));
+    // $("#most-common").html(mostUsedWords(word, text))
   });
 });
